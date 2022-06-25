@@ -1,0 +1,35 @@
+{
+  "name": "desafio-bakcend-abmex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.ts",
+    "start": "node ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creztfallen/desafio-bakcend-abmex.git"
+  },
+  "author": "Mateus Moreno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/creztfallen/desafio-bakcend-abmex/issues"
+  },
+  "homepage": "https://github.com/creztfallen/desafio-bakcend-abmex#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.0",
+    "nodemon": "^2.0.18",
+    "ts-node": "^10.8.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "node-postgres": "^0.6.2",
+    "pg": "^8.7.3",
+    "sequelize": "^6.21.0"
+  }
+}
