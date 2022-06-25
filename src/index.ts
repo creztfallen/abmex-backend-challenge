@@ -1,24 +1,33 @@
 import express from 'express';
 const app = express();
-import bodyParser from 'body-parser';
-import * as dotenv from 'dotenv';
+import * as bodyParser from 'body-parser';
+import 'dotenv/config';
 import {Sequelize} from 'sequelize';
 
 const championship = require("./api/v1/routes/championship");
 
-dotenv.config({path:__dirname + "../config/config.env"});
+
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 const db_name = process.env.DB_NAME;
 const db_username = process.env.DB_USERNAME;
 const db_password = process.env.DB_PASSWORD;
 
-console.log(db_password);
+if (!db_name){
+    throw new Error('Gimme the envs, baby.')
+}
 
-const sequelize = new Sequelize('abmex2', 'mat', 'gunesimi', {
+if (!db_username){
+    throw new Error('Gimme the envs, baby.')
+}
+
+if (!db_password){
+    throw new Error('Gimme the envs, baby.')
+}
+
+const sequelize = new Sequelize(db_name, db_username, db_password, {
     host: 'localhost',
     dialect: 'postgres'
 });
