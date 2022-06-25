@@ -5,6 +5,7 @@ const router = Router();
 
 const championshipController = require('../../controllers/championshipController');
 
-router.get('/', championshipController.getSomething);
+router.get('/', championshipController.getAll);
+router.post('/', championshipController.createChampionship);
 
-module.exports = router;
+export default router;
