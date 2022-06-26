@@ -1,9 +1,11 @@
 import express from 'express';
 const app = express();
-import * as bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 import 'dotenv/config';
+
 import connection from './database/connection';
-import championship from "./api/v1/routes/championship";
+import championship from './api/v1/routes/championship';
+import team from './api/v1/routes/team';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -12,10 +14,11 @@ try {
     connection.authenticate();
     console.log('Connection has been established successfully.');
 } catch (error) {
-    console.error('Unable to connect to the database:', error);
+    console.error('Unable to connect to the database.', error);
 }
 
-app.use('/championships', championship);
+app.use('/api/v1/championships', championship);
+app.use('/api/v1/teams', team);
 
 const PORT = process.env.PORT || 3000;
 
