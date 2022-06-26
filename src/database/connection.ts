@@ -17,7 +17,7 @@ if (!db_password){
     throw new Error('Gimme the envs, baby.')
 }
 
-const connection = new Sequelize(db_name, db_username, db_password, 
+const connection = new Sequelize(db_name, db_username, db_password,
     {
         host: 'localhost',
         dialect: 'postgres'

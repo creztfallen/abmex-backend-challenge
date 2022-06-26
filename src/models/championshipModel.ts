@@ -1,5 +1,7 @@
-import { Sequelize, DataTypes } from 'sequelize';
+import { DataTypes } from 'sequelize';
 import connection from '../database/connection';
+import Team from './teamModel';
+
 
 const Championship = connection.define('championship', {
   name: {
@@ -12,6 +14,9 @@ const Championship = connection.define('championship', {
   prize: {
     type: DataTypes.STRING
   }
-}, {timestamps: false});
+}, 
+{timestamps: false} );
+
+
 
 export default Championship
