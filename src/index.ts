@@ -6,6 +6,7 @@ import 'dotenv/config';
 import connection from './database/connection';
 import championship from './api/v1/routes/championship';
 import team from './api/v1/routes/team';
+import match from './api/v1/routes/match';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,6 +20,7 @@ try {
 
 app.use('/api/v1/championships', championship);
 app.use('/api/v1/teams', team);
+app.use('/api/v1/matches', match)
 
 const PORT = process.env.PORT || 3000;
 
