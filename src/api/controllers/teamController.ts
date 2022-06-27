@@ -1,5 +1,9 @@
 import {Request, Response} from 'express';
 import Teams from '../../models/teamModel';
+import getAll from '../../utils/getAll';
+import getOne from '../../utils/getOne';
+import destroy from '../../utils/destroy';
+
 
 exports.createTeam = (req:Request, res: Response) => {
     const {name, initials, championship_id} = req.body;
@@ -9,27 +13,29 @@ exports.createTeam = (req:Request, res: Response) => {
    .catch((error) => res.status(400).send(error.message));
 }
 
-exports.getAll = (req:Request, res:Response) => {
-    Teams.findAll()
+exports.getAllTeams = (req:Request, res:Response) => {
+    getAll(Teams)
     .then((results) => res.status(200).send(results))
     .catch((error) => res.status(400).send(error.message));
 }
 
-exports.getOne = (req:Request, res:Response) => {
-    Teams.findOne({where: {id: req.params.id}})
+exports.getOneTeam = (req:Request, res:Response) => {
+    const id = req.params.id;
+    getOne(Teams, id)
     .then((results) => res.status(200).send(results))
     .catch((error) => res.status(400).send(error.message));
 }
 
-exports.update = (req:Request, res:Response) => {
+exports.updateTeam = (req:Request, res:Response) => {
     const {name, initials} = req.body;
     Teams.update({name, initials},{where:{id:req.params.id}})
     .then((results) => res.status(200).send(results))
     .catch((error) => res.status(400).send(error.message));
 }
 
-exports.destroy = (req:Request, res:Response) => {
-    Teams.destroy({where:{id:req.params.id}})
+exports.destroyTeam = (req:Request, res:Response) => {
+    const id = req.params.id;
+    destroy(Teams, id)
     .then(() => res.status(200).send("Team destroyed."))
     .catch((error) => res.status(400).send(error.message));
 }

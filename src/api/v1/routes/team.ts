@@ -5,10 +5,10 @@ const router = Router();
 const teamController = require('../../controllers/teamController');
 
 router.post('/', teamController.createTeam);
-router.get('/', teamController.getAll);
-router.get('/:id', teamController.getOne);
-router.patch('/:id', teamController.update);
-router.delete('/:id', teamController.destroy);
+router.get('/', teamController.getAllTeams);
+router.get('/:id', teamController.getOneTeam);
+router.patch('/:id', teamController.updateTeam);
+router.delete('/:id', teamController.destroyTeam);
 
 
 export default router;
